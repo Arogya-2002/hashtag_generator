@@ -37,13 +37,13 @@ The Gemini Flash Hashtag Generator leverages the Google Generative AI API to pro
 ---
 
 ## Project Structure
-
+```bash
 hash_generator/
 ├── .env                # Stores Google API key
 ├── main.py             # Core script for hashtag generation
 ├── requirements.txt    # Python dependencies
 └── README.md           # Project documentation
-
+```
 
 ---
 
