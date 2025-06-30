@@ -56,32 +56,39 @@ Follow these steps to set up the project:
    git clone https://github.com/your-username/hash_generator.git
    cd hash_generator
 
-   Set Up a Virtual Environment (optional, recommended):
+Set Up a Virtual Environment (optional, recommended):
 
-python3.10 -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+```bash
+   python3.10 -m venv venv
+   source venv/bin/activate  # macOS/Linux
+   venv\Scripts\activate     # Windows
+```
 
 Install Dependencies:
-
-pip install -r requirements.txt
+```bash
+   pip install -r requirements.txt
+```
 
 Configure the API Key:
-Create a .env file in the project root.
+```bash
+   Create a .env file in the project root.
+```
 
 Add your Google API key:
-
+```bash
 GOOGLE_API_KEY=your_actual_gemini_api_key_here
+```
 
 Usage
 Run the script from the command line, providing a caption and the number of hashtags to generate.
 Command-Line Example
-
+```bash
 python main.py "Exploring the ancient ruins of Hampi" 10
+```
 
 This command generates 10 hashtags for the given caption, displaying them with timestamps and execution time.
 Sample Output
-
+```bash
 [2025-06-30 16:05:12] Starting program
 [2025-06-30 16:05:12] Loading .env file...
 [2025-06-30 16:05:12] Configuring Gemini with API key...
@@ -97,23 +104,26 @@ Hashtags:
 #BackpackingIndia #IncredibleIndia #CulturalHeritage #AdventureTravel #HiddenGems
 
 [2025-06-30 16:05:13] Program completed. Total time taken: 1.63 seconds
+```
 
 Requirements
+```bash
 Python 3.10 or higher
-
+```
 Access to Google Generative AI API
 
 Valid API key for Gemini 1.5 Flash model
 
 Dependencies
+```bash
 google-generativeai
 
 python-dotenv
-
+```
 Install them using:
-
+```bash
 pip install -r requirements.txt
-
+```
 Important Notes
 Security: Add .env to .gitignore to prevent exposing your API key in version control.
 
@@ -151,4 +161,3 @@ This project is licensed under the MIT License (LICENSE).
 - The dataset context from earlier (e.g., `instagram-images-with-captions`) isn’t referenced here, as the `README` is for the Gemini-based project. If you want a `README` for the transformer-based hashtag generator (with the dataset), I can create a separate version.
 - For Streamlit, Flask, or GitHub Pages integration, let me know, and I can provide a customized `README` or additional code.
 
-If you need further tweaks, specific sections, or integration with the transformer model project, please let me know!
