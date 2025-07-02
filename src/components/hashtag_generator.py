@@ -3,6 +3,7 @@ from datetime import datetime
 from src.exceptions import CustomException
 from src.logger import logging
 from src.entity.hashtag_config_entity import HashtagConfigEntity, ConfigEntity
+from src.entity.hashtag_artifact_entity import HashtagGeneratorArtifact
 import sys
 
 class HashtagGenerator:
@@ -21,7 +22,9 @@ class HashtagGenerator:
         Args:
             caption (str): Caption for which hashtags are to be generated
             model: Gemini model object
-            k (int): Number of hashtags to generate (default is 5)
+
+        Returns:
+            HashtagGeneratorArtifact: Structured output with hashtag list
         """
         try:
             logging.info("Preparing prompt for the caption.")
@@ -38,13 +41,13 @@ Hashtags:"""
             logging.info(f"Received response from Gemini (Time taken: {t2 - t1:.2f} sec)")
 
             if response.text:
-                hashtags = response.text.strip().replace("\n", " ")
+                hashtags = response.text.strip().replace("\n", " ").split()
                 logging.info(f"Caption: {caption}")
                 logging.info(f"Generated Hashtags: {hashtags}")
-                return hashtags
+                return HashtagGeneratorArtifact(hashtags=hashtags)
             else:
                 logging.warning("Empty response received from model.")
-                return None
+                return HashtagGeneratorArtifact(hashtags=[])
 
         except Exception as e:
             logging.error("Exception occurred during hashtag generation.")

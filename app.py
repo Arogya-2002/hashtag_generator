@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from src.pipeline.hashtag_pipeline import hashtag_pipeline
 from src.logger import logging
 from src.exceptions import CustomException
+from src.entity.hashtag_artifact_entity import HashtagGeneratorArtifact
 
 # FastAPI app initialization
 app = FastAPI(title="Hashtag Generator API")
@@ -31,10 +32,10 @@ def read_root():
 def generate_hashtags(input_data: CaptionInput):
     try:
         logging.info("API call received for hashtag generation.")
-        result = hashtag_pipeline(input_data.caption)
+        artifact: HashtagGeneratorArtifact = hashtag_pipeline(input_data.caption)
 
-        if result:
-            return {"hashtags": result}
+        if artifact and artifact.hashtags:
+            return {"hashtags": artifact.hashtags}
         else:
             raise HTTPException(status_code=204, detail="No hashtags generated.")
 
